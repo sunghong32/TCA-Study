@@ -19,6 +19,7 @@
 		65A5209D2A5BD7AD005E1917 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A5209C2A5BD7AD005E1917 /* ProductCell.swift */; };
 		65A5209F2A5BF29B005E1917 /* ProductListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A5209E2A5BF29B005E1917 /* ProductListDomain.swift */; };
 		65A520A22A5CFC9F005E1917 /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520A12A5CFC9F005E1917 /* ProductListView.swift */; };
+		65A520A52A5D237E005E1917 /* CartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520A42A5D237E005E1917 /* CartListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		65A5209C2A5BD7AD005E1917 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		65A5209E2A5BF29B005E1917 /* ProductListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListDomain.swift; sourceTree = "<group>"; };
 		65A520A12A5CFC9F005E1917 /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		65A520A42A5D237E005E1917 /* CartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		65A5207E2A57DDAD005E1917 /* OnlineStoreTCA_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				65A520A32A5D2370005E1917 /* CartList */,
 				65A520A02A5BF2A9005E1917 /* ProductList */,
 				65A520972A5BAF53005E1917 /* Product */,
 				65A520902A57DE49005E1917 /* AddToCart */,
@@ -112,6 +115,14 @@
 				65A520A12A5CFC9F005E1917 /* ProductListView.swift */,
 			);
 			path = ProductList;
+			sourceTree = "<group>";
+		};
+		65A520A32A5D2370005E1917 /* CartList */ = {
+			isa = PBXGroup;
+			children = (
+				65A520A42A5D237E005E1917 /* CartListView.swift */,
+			);
+			path = CartList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A520A52A5D237E005E1917 /* CartListView.swift in Sources */,
 				65A520922A5BA762005E1917 /* AddToCartDomain.swift in Sources */,
 				65A5209B2A5BCF86005E1917 /* ProductDomain.swift in Sources */,
 				65A520942A5BA7C0005E1917 /* PlustMinusButton.swift in Sources */,

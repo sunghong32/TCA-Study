@@ -12,14 +12,6 @@ import ComposableArchitecture
 struct OnlineStoreTCA_DemoApp: App {
     var body: some Scene {
         WindowGroup {
-//            PlustMinusButton(
-//                store: Store(
-//                    initialState: AddToCartDomain.State(),
-//                    reducer: AddToCartDomain.reducer,
-//                    environment: AddToCartDomain.Environment()
-//                )
-//            )
-
             ProductListView(
                 store: Store(
                     initialState: ProductListDomain.State(),
