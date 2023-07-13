@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct ProductListDomain {
     struct State: Equatable {
         var productList: IdentifiedArrayOf<ProductDomain.State> = []
+        var cartState: CartListDomain.State?
         var shouldOpenCart: Bool = false
     }
 
@@ -19,6 +20,7 @@ struct ProductListDomain {
         case fetchProductResponse(TaskResult<[Product]>)
         case product(id: ProductDomain.State.ID, action: ProductDomain.Action)
         case setCart(isPresented: Bool)
+        case cart(CartListDomain.Action)
     }
 
     struct Environment {
@@ -32,6 +34,13 @@ struct ProductListDomain {
                 action: /Action.product(id:action:),
                 environment: { _ in ProductDomain.Environment() }
             ),
+            CartListDomain.reducer
+                .optional()
+                .pullback(
+                    state: \.cartState,
+                    action: /Action.cart,
+                    environment: { _ in CartListDomain.Environment() }
+                ),
             .init { state, action, environment in
                 switch action {
                     case .fetchProducts:
@@ -59,6 +68,37 @@ struct ProductListDomain {
                         return .none
                     case .setCart(let isPresented):
                         state.shouldOpenCart = isPresented
+                        state.cartState = isPresented ?
+                        CartListDomain.State(
+                            cartItems: IdentifiedArray(
+                                uniqueElements: state.productList.compactMap { state in
+                                    state.addToCartState.count > 0 ?
+                                    CartItemDomain.State(
+                                        id: UUID(),
+                                        cartItem: CartItem(
+                                            product: state.product,
+                                            quantity: state.addToCartState.count
+                                        )
+                                    )
+                                    : nil
+                                }
+                            )
+                        )
+                        : nil
+                        return .none
+                    case .cart(let action):
+                        switch action {
+                            case .didPressCloseButton:
+                                state.shouldOpenCart = false
+                            case .cartItem(_ , let action):
+                                switch action {
+                                    case .deleteCartItem(let product):
+                                        guard let index = state.productList.firstIndex(where: { $0.product.id == product.id }) else { return .none }
+
+                                        let productStateId = state.productList[index].id
+                                        state.productList[id: productStateId]?.count = 0
+                                }
+                        }
                         return .none
                 }
             }

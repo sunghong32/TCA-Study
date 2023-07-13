@@ -13,6 +13,11 @@ struct ProductDomain {
         let id: UUID
         let product: Product
         var addToCartState = AddToCartDomain.State()
+
+        var count: Int {
+            get { addToCartState.count }
+            set { addToCartState.count = newValue }
+        }
     }
 
     enum Action: Equatable {

@@ -44,7 +44,13 @@ struct ProductListView: View {
                     get: \.shouldOpenCart,
                     send: ProductListDomain.Action.setCart(isPresented:)
                 )) {
-                    CartListView()
+                    IfLetStore(
+                        self.store.scope(
+                            state: \.cartState,
+                            action: ProductListDomain.Action.cart
+                        )) {
+                            CartListView(store: $0)
+                        }
                 }
             }
         }
