@@ -64,9 +64,8 @@ struct ProductListView_Previews: PreviewProvider {
                 initialState: ProductListDomain.State(),
                 reducer: ProductListDomain.reducer,
                 environment: ProductListDomain.Environment(
-                    fetchProducts: {
-                        Product.sample
-                    }
+                    fetchProducts: { Product.sample },
+                    sendOrder: { _ in "OK" }
                 )
             )
         )

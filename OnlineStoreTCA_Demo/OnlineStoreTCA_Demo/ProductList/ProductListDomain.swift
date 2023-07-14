@@ -25,6 +25,7 @@ struct ProductListDomain {
 
     struct Environment {
         var fetchProducts: () async -> [Product]
+        var sendOrder: ([CartItem]) async throws -> String
     }
 
     static let reducer = AnyReducer<State, Action, Environment>
@@ -39,7 +40,9 @@ struct ProductListDomain {
                 .pullback(
                     state: \.cartState,
                     action: /Action.cart,
-                    environment: { _ in CartListDomain.Environment() }
+                    environment: { 
+                        CartListDomain.Environment(sendOrder: $0.sendOrder)
+                    }
                 ),
             .init { state, action, environment in
                 switch action {
@@ -98,6 +101,8 @@ struct ProductListDomain {
                                         let productStateId = state.productList[index].id
                                         state.productList[id: productStateId]?.count = 0
                                 }
+                            default:
+                                break
                         }
                         return .none
                 }
