@@ -61,6 +61,18 @@ struct CartListView: View {
                     .disabled(viewStore.isPayButtonDisable)
                 }
             }
+            .alert(
+                self.store.scope(state: \.confirmationAlert),
+                dismiss: .didCancelConfirmation
+            )
+            .alert(
+                self.store.scope(state: \.successAlert),
+                dismiss: .dismissSuccessAlert
+            )
+            .alert(
+                self.store.scope(state: \.errorAlert),
+                dismiss: .dismissSuccessAlert
+            )
         }
     }
 }

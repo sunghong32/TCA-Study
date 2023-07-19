@@ -34,7 +34,7 @@ struct ProductListView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            viewStore.send(.setCart(isPresented: true))
+                            viewStore.send(.setCartView(isPresented: true))
                         } label: { 
                             Text("Go to Cart")
                         }
@@ -42,7 +42,7 @@ struct ProductListView: View {
                 }
                 .sheet(isPresented: viewStore.binding(
                     get: \.shouldOpenCart,
-                    send: ProductListDomain.Action.setCart(isPresented:)
+                    send: ProductListDomain.Action.setCartView(isPresented:)
                 )) {
                     IfLetStore(
                         self.store.scope(

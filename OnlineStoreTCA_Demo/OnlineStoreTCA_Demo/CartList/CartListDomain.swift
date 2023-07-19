@@ -13,6 +13,9 @@ struct CartListDomain {
         var cartItems: IdentifiedArrayOf<CartItemDomain.State> = []
         var totalPrice: Double = 0.0
         var isPayButtonDisable: Bool = false
+        var confirmationAlert: AlertState<Action>?
+        var successAlert: AlertState<Action>?
+        var errorAlert: AlertState<Action>?
 
         var totalPriceString: String {
             let roundedValue = round(totalPrice * 100) / 100.0
@@ -26,6 +29,11 @@ struct CartListDomain {
         case getTotalPrice
         case didPressPayButton
         case didReceivePurchaseResponse(TaskResult<String>)
+        case didConfirmPurchase
+        case didCancelConfirmation
+        case dismissSuccessAlert
+        case dismissErrorAlert
+        case setCartView(isPresensted: Bool)
     }
 
     struct Environment {
@@ -55,6 +63,31 @@ struct CartListDomain {
                         })
                         return verifyPayButtonVisibility(state: &state)
                     case .didPressPayButton:
+                        state.confirmationAlert = AlertState(
+                            title: TextState("Confirm your purchase"),
+                            message: TextState("Do you want to proceed with your purchase of \(state.totalPriceString)?"),
+                            buttons: [
+                                .default(
+                                    TextState("Pay \(state.totalPriceString)"),
+                                    action: .send(.didConfirmPurchase)
+                                ),
+                                .cancel(
+                                    TextState("Cancel"),
+                                    action: .send(.didCancelConfirmation)
+                                )
+                            ]
+                        )
+                        return .none
+                    case .didCancelConfirmation:
+                        state.confirmationAlert = nil
+                        return .none
+                    case .dismissSuccessAlert:
+                        state.successAlert = nil
+                        return .none
+                    case .dismissErrorAlert:
+                        state.errorAlert = nil
+                        return .none
+                    case .didConfirmPurchase:
                         let items = state.cartItems.map { $0.cartItem }
                         return .task {
                             await .didReceivePurchaseResponse(
@@ -64,13 +97,35 @@ struct CartListDomain {
                             )
                         }
                     case .didReceivePurchaseResponse(.success(let message)):
-                        print(message)
+                        state.successAlert = AlertState(
+                            title: TextState("Thank you!"),
+                            message: TextState("Your order is in process."),
+                            buttons: [
+                                .default(
+                                    TextState("Done"),
+                                    action: .send(.dismissSuccessAlert)
+                                )
+                            ]
+                        )
+                        print("Success: ", message)
                         return .none
-
                     case .didReceivePurchaseResponse(.failure(let error)):
-                        print(error.localizedDescription)
+                        state.errorAlert = AlertState(
+                            title: TextState("Oops!"),
+                            message: TextState("Unable to send order, try again later."),
+                            buttons: [
+                                .default(
+                                    TextState("Done"),
+                                    action: .send(.dismissErrorAlert)
+                                )
+                            ]
+                        )
+                        print("Error sending your order: ", error.localizedDescription)
                         return .none
+                    case .setCartView(isPresensted: let isPresensted):
+                        break
                 }
+                return .none
             }
         )
 

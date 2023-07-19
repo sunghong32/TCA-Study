@@ -77,11 +77,11 @@
 		65A5207E2A57DDAD005E1917 /* OnlineStoreTCA_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				65A5207F2A57DDAD005E1917 /* OnlineStoreTCA_DemoApp.swift */,
 				65A520A32A5D2370005E1917 /* CartList */,
 				65A520A02A5BF2A9005E1917 /* ProductList */,
 				65A520972A5BAF53005E1917 /* Product */,
 				65A520902A57DE49005E1917 /* AddToCart */,
-				65A5207F2A57DDAD005E1917 /* OnlineStoreTCA_DemoApp.swift */,
 				65A520832A57DDAE005E1917 /* Assets.xcassets */,
 				65A520852A57DDAE005E1917 /* Preview Content */,
 			);
