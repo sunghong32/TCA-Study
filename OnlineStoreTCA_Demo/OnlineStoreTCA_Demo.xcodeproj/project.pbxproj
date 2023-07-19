@@ -24,6 +24,7 @@
 		65A520AA2A5D3A13005E1917 /* CasrtItemDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520A92A5D3A13005E1917 /* CasrtItemDomain.swift */; };
 		65A520AC2A5D3A8D005E1917 /* CartListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520AB2A5D3A8D005E1917 /* CartListDomain.swift */; };
 		65A520AE2A5D3CE0005E1917 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520AD2A5D3CE0005E1917 /* CartCell.swift */; };
+		65A520B12A67B5B3005E1917 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520B02A67B5B3005E1917 /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		65A520A92A5D3A13005E1917 /* CasrtItemDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasrtItemDomain.swift; sourceTree = "<group>"; };
 		65A520AB2A5D3A8D005E1917 /* CartListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListDomain.swift; sourceTree = "<group>"; };
 		65A520AD2A5D3CE0005E1917 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		65A520B02A67B5B3005E1917 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				65A5207F2A57DDAD005E1917 /* OnlineStoreTCA_DemoApp.swift */,
+				65A520AF2A67B573005E1917 /* Network */,
 				65A520A32A5D2370005E1917 /* CartList */,
 				65A520A02A5BF2A9005E1917 /* ProductList */,
 				65A520972A5BAF53005E1917 /* Product */,
@@ -143,6 +146,14 @@
 				65A520AD2A5D3CE0005E1917 /* CartCell.swift */,
 			);
 			path = CartItem;
+			sourceTree = "<group>";
+		};
+		65A520AF2A67B573005E1917 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				65A520B02A67B5B3005E1917 /* APIClient.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +242,7 @@
 				65A520962A5BA926005E1917 /* AddToCartButton.swift in Sources */,
 				65A520AC2A5D3A8D005E1917 /* CartListDomain.swift in Sources */,
 				65A5209D2A5BD7AD005E1917 /* ProductCell.swift in Sources */,
+				65A520B12A67B5B3005E1917 /* APIClient.swift in Sources */,
 				65A520AA2A5D3A13005E1917 /* CasrtItemDomain.swift in Sources */,
 				65A520A22A5CFC9F005E1917 /* ProductListView.swift in Sources */,
 				65A520802A57DDAD005E1917 /* OnlineStoreTCA_DemoApp.swift in Sources */,
