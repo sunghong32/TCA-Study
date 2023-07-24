@@ -25,6 +25,8 @@
 		65A520AC2A5D3A8D005E1917 /* CartListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520AB2A5D3A8D005E1917 /* CartListDomain.swift */; };
 		65A520AE2A5D3CE0005E1917 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520AD2A5D3CE0005E1917 /* CartCell.swift */; };
 		65A520B12A67B5B3005E1917 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520B02A67B5B3005E1917 /* APIClient.swift */; };
+		65A520B32A67BCE4005E1917 /* DataLoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A520B22A67BCE4005E1917 /* DataLoadingStatus.swift */; };
+		65F6F7142A6DF3B400C267BA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F6F7132A6DF3B400C267BA /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		65A520AB2A5D3A8D005E1917 /* CartListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListDomain.swift; sourceTree = "<group>"; };
 		65A520AD2A5D3CE0005E1917 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		65A520B02A67B5B3005E1917 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		65A520B22A67BCE4005E1917 /* DataLoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingStatus.swift; sourceTree = "<group>"; };
+		65F6F7132A6DF3B400C267BA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 			children = (
 				65A5209E2A5BF29B005E1917 /* ProductListDomain.swift */,
 				65A520A12A5CFC9F005E1917 /* ProductListView.swift */,
+				65F6F7132A6DF3B400C267BA /* ErrorView.swift */,
 			);
 			path = ProductList;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				65A520B02A67B5B3005E1917 /* APIClient.swift */,
+				65A520B22A67BCE4005E1917 /* DataLoadingStatus.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -236,6 +242,7 @@
 				65A520AE2A5D3CE0005E1917 /* CartCell.swift in Sources */,
 				65A520922A5BA762005E1917 /* AddToCartDomain.swift in Sources */,
 				65A520A82A5D3967005E1917 /* CartItem.swift in Sources */,
+				65F6F7142A6DF3B400C267BA /* ErrorView.swift in Sources */,
 				65A5209B2A5BCF86005E1917 /* ProductDomain.swift in Sources */,
 				65A520942A5BA7C0005E1917 /* PlustMinusButton.swift in Sources */,
 				65A520992A5BAF68005E1917 /* Product.swift in Sources */,
@@ -246,6 +253,7 @@
 				65A520AA2A5D3A13005E1917 /* CasrtItemDomain.swift in Sources */,
 				65A520A22A5CFC9F005E1917 /* ProductListView.swift in Sources */,
 				65A520802A57DDAD005E1917 /* OnlineStoreTCA_DemoApp.swift in Sources */,
+				65A520B32A67BCE4005E1917 /* DataLoadingStatus.swift in Sources */,
 				65A5209F2A5BF29B005E1917 /* ProductListDomain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

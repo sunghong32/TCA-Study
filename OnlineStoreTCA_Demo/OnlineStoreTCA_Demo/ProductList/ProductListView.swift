@@ -14,14 +14,25 @@ struct ProductListView: View {
     var body: some View {
         WithViewStore(self.store) { viewStore in
             NavigationStack {
-                List {
-                    ForEachStore (
-                        self.store.scope(
-                            state: \.productList,
-                            action: ProductListDomain.Action.product(id:action:)
-                        )
-                    ) {
-                        ProductCell(store: $0)
+                Group {
+                    if viewStore.isLoading {
+                        ProgressView()
+                            .frame(width: 100, height: 100)
+                    } else if viewStore.shouldShowError {
+                        ErrorView(message: "Oops, we couldn't fetch product list") {
+                            viewStore.send(.fetchProducts)
+                        }
+                    } else {
+                        List {
+                            ForEachStore (
+                                self.store.scope(
+                                    state: \.productList,
+                                    action: ProductListDomain.Action.product(id:action:)
+                                )
+                            ) {
+                                ProductCell(store: $0)
+                            }
+                        }
                     }
                 }
                 .task {

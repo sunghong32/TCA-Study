@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct CartListDomain {
     struct State: Equatable {
+        var dataLoadingStatus = DataLoadingStatus.notStarted
         var cartItems: IdentifiedArrayOf<CartItemDomain.State> = []
         var totalPrice: Double = 0.0
         var isPayButtonDisable: Bool = false
@@ -20,6 +21,10 @@ struct CartListDomain {
         var totalPriceString: String {
             let roundedValue = round(totalPrice * 100) / 100.0
             return "$\(roundedValue)"
+        }
+
+        var isRequestInProcess: Bool {
+            dataLoadingStatus == .loading
         }
     }
 
@@ -88,6 +93,7 @@ struct CartListDomain {
                         state.errorAlert = nil
                         return .none
                     case .didConfirmPurchase:
+                        state.dataLoadingStatus = .loading
                         let items = state.cartItems.map { $0.cartItem }
                         return .task {
                             await .didReceivePurchaseResponse(
@@ -97,6 +103,7 @@ struct CartListDomain {
                             )
                         }
                     case .didReceivePurchaseResponse(.success(let message)):
+                        state.dataLoadingStatus = .success
                         state.successAlert = AlertState(
                             title: TextState("Thank you!"),
                             message: TextState("Your order is in process."),
@@ -110,6 +117,7 @@ struct CartListDomain {
                         print("Success: ", message)
                         return .none
                     case .didReceivePurchaseResponse(.failure(let error)):
+                        state.dataLoadingStatus = .error
                         state.errorAlert = AlertState(
                             title: TextState("Oops!"),
                             message: TextState("Unable to send order, try again later."),
